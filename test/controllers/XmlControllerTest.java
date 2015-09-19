@@ -25,9 +25,23 @@ public class XmlControllerTest {
     public void testWF() throws Exception {
         XmlController xs = XmlController.getControler();
         System.out.println(new File("testData\\wf\\noHead.xml").getAbsolutePath());
-        System.out.println(new File("testData\\wf\\noHead.xml").exists());
         try {
-            xs.getDocument(new File("testData\\wf\\doubleRoot.xml"));
+            xs.getDocument("testData\\wf\\doubleRoot.xml");
+        } catch (SAXException ex) {
+            System.err.println(ex.getException());
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    @Test
+    public void testIsValid() throws Exception {
+        XmlController xs = XmlController.getControler();
+        xs.setSchema(null);
+        xs.isValid(null);
+        System.out.println(new File("testData\\wf\\noHead.xml").getAbsolutePath());
+        try {
+            xs.getDocument("testData\\wf\\doubleRoot.xml");
         } catch (SAXException ex) {
             System.err.println(ex.getException());
         } catch (IOException ex) {

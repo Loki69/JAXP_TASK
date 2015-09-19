@@ -9,15 +9,18 @@
     <xs:element name="xsdValid">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="xsdPath">
-                    <xs:element name="xmlReset" type="xmlResetType"/>
+                <xs:element name="xsdPath"/>
+                <xs:element name="xmlReset" type="xmlResetType"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:complexType name="xmlResetType">
         <xs:sequence>
-            <xs:element name="xmlPath" maxOccurs="unbounded"></xs:element>
+            <xs:element name="xmlPath" maxOccurs="unbounded">
+                <xs:simpleType/>
+                    <xs:attribute name="valid=" type="xs:string"/>
+            </xs:element>
         </xs:sequence>    
     </xs:complexType>
 
