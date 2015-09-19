@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <xsdList>
+        <xsdPath></xsdPath>
+        <xsdPath></xsdPath>
+    </xsdList>
+    <xmlReset>
+        <xmlPath valid="false"></xmlPath>
+        <xmlPath valid="false"></xmlPath>
+        <xmlPath valid="false"></xmlPath>
+        <xmlPath valid="false"></xmlPath>
+    </xmlReset>
+</project>
