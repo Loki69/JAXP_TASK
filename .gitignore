@@ -1,3 +1,20 @@
+# Netbeans
 build.xml
 manifest.mf
 /nbproject
+/build
+/dist
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
