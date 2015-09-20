@@ -37,16 +37,14 @@ public class XmlControllerTest {
     @Test
     public void testIsValid() throws Exception {
         XmlController xs = XmlController.getControler();
-        xs.setSchema(null);
-        xs.isValid(null);
-        System.out.println(new File("testData\\wf\\noHead.xml").getAbsolutePath());
-        try {
-            xs.getDocument("testData\\wf\\doubleRoot.xml");
-        } catch (SAXException ex) {
-            System.err.println(ex.getException());
-        } catch (IOException ex) {
-            System.err.println(ex);
+
+        try{
+            xs.setSchema(new File("C:\\GitHub\\test.xsd"));
+            xs.isValid(new File("C:\\GitHub\\testxm.xml"));
+            xs.isValid(new File("C:\\GitHub\\testxmv.xml"));
+        }catch(SAXException ex){
+            System.out.println(ex.getLocalizedMessage());
         }
     }
-
+    
 }
