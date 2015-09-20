@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="packJSStructure">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="file" type="fileType"/>
+                <xsd:element name="module" type="moduleType"/>
+            </xsd:choice>
+        </xsd:complexType>
+        
+        <xsd:key name="idKeyUnic">
+            <xsd:selector xpath="file | module"/>
+            <xsd:field xpath="id"/>
+        </xsd:key>
+                                
+    </xsd:element>
+    
+    <xsd:complexType name="fileType">
+        <xsd:complexContent>
+            <xsd:extension base="mainTyp">
+                <xsd:sequence>
+                    <xsd:element name="uncompressedSrcName" type="jsPathType" />
+                    <xsd:element name="compressedSrcName" type="jsPathType" minOccurs="0" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>		
+    
+    <xsd:complexType name="moduleType">
+        <xsd:complexContent>
+            <xsd:extension base="mainTyp">
+                <xsd:sequence>
+                    <xsd:element ref="files"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="jsPathType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([a-zA-Z0-9~!@#$%^();,.'=/-])+[.]js" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="mainTyp">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="id" type="idType" />
+            <xsd:element name="basePath" type="pathType" />
+            <xsd:element name="outputPath" type="xsd:string" />
+            <xsd:element name="compressionLevel" type="compressionLevelType"/>
+            <xsd:element ref="dependencies"/>
+        </xsd:choice>
+    </xsd:complexType>
+    
+    <xsd:element name="dependencies" >
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="dependency"  maxOccurs="unbounded"  type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:unique name="dependencyKey">
+            <xsd:selector xpath="dependency" />
+            <xsd:field xpath="." />
+        </xsd:unique>
+    </xsd:element>
+    
+    <xsd:element name="files" >
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="file"   maxOccurs="unbounded"  type="jsPathType" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:simpleType name="idType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([A-Za-z0-9-])*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+ 
+    <xsd:simpleType name="pathType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(([a-zA-Z0-9!@#$%^*?*+-])*([/])?*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="compressionLevelType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[wW][hH][iI][tT][eE][sS][pP][aA][cC][eE][_][oO][nN][lL][yY]"/>
+            <xsd:pattern value="[wW][hH][iI][tT][eE][sS][pP][aA][cC][eE]"/>
+            <xsd:pattern value="[sS][iI][mM][pP][lL][eE][_][oO][pP][tT][iI][mM][iI]Z[aA][tT][iI][oO][nN][sS]"/>
+            <xsd:pattern value="[sS][iI][mM][pP][lL][eE]"/>
+            <xsd:pattern value="[oO][pP][tT][iI][mM][iI]Z[aA][tT][iI][oO][nN][_][aA]DV[aA][nN][cC][eE]D"/>
+            <xsd:pattern value="[aA]DV[aA][nN][cC][eE]D[_][oO][pP][tT][iI][mM][iI]Z[aA][tT][iI][oO][nN][sS]"/>
+            <xsd:pattern value="[aA]DV[aA][nN][cC][eE]D"/>
+            <xsd:pattern value="[nN][oO][nN][eE]"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

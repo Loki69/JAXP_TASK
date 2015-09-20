@@ -48,9 +48,8 @@ public class XmlController {
         validator = schema.newValidator();
     }
 
-    public String isValid(String xmlFile) throws SAXException, IOException {
-        Source xml = new StreamSource(new File(xmlFile));
+    public void isValid(File xmlFile) throws SAXException, IOException {
+        Source xml = new StreamSource(xmlFile);
         validator.validate(xml);
-        return null;
     }
 }

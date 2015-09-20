@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <xsdList>
-        <xsdPath></xsdPath>
-        <xsdPath></xsdPath>
-    </xsdList>
+    <xsdPath>C:/Project/Java/XSDValidator/testData/data/Validator.xsd</xsdPath>
     <xmlReset>
-        <xmlPath valid="false"></xmlPath>
-        <xmlPath valid="false"></xmlPath>
-        <xmlPath valid="false"></xmlPath>
-        <xmlPath valid="false"></xmlPath>
+        <xmlPath></xmlPath>
+        <xmlPath></xmlPath>
+        <xmlPath></xmlPath>
+        <xmlPath></xmlPath>
     </xmlReset>
 </project>

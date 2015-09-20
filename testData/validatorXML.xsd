@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://xml.netbeans.org/schema/validInputXML"
-           xmlns:tns="http://xml.netbeans.org/schema/validInputXML"
-           elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     
 
-    <xs:element name="xsdValid">
+    <xs:element name="project">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="xsdPath">
-                    <xs:element name="xmlReset" type="xmlResetType"/>
+                <xs:element name="xsdPath" type="XSDpathType"/>
+                <xs:element name="xmlReset">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="xmlResetType"/>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <xs:simpleType name="XMLpathType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Za-z]:/)(\w+[\w\-/])+[.]xml"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="XSDpathType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Za-z]:/)(\w+[\w\-/])+[.]xsd"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:complexType name="xmlResetType">
         <xs:sequence>
-            <xs:element name="xmlPath" maxOccurs="unbounded"></xs:element>
+            <xs:element name="xmlPath" maxOccurs="unbounded" type="XMLpathType"/>
         </xs:sequence>    
     </xs:complexType>
-
-    
 </xs:schema>
