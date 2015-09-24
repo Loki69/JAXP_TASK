@@ -1,32 +1,27 @@
-package logic;
+package XmlTools;
 
-import controllers.ValidatorSchema;
-import controllers.XmlParser;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class ListData{
+public class ListValidator{
 
-    private ValidatorSchema vs;
+    private ValidatorXMLSchema vs;
     private StringBuilder sb;
 
     public String validXML(Document inputData) throws IOException{
         sb = new StringBuilder();
         XmlParser xs = XmlParser.getControler();
-
-        if(getXSDFile(inputData, xs)){
-            validetData(inputData);
+        if(setXSDSchema(inputData, xs)){
+            validetXmlList(inputData);
         }
         return sb.toString();
     }
 
-    private void validetData(Document inputData){
+    private void validetXmlList(Document inputData){
         NodeList listXmlPath = inputData.getElementsByTagName("xmlPath");
         for(int i = 0; i < listXmlPath.getLength(); i++){
             Element nod = (Element)listXmlPath.item(i);
@@ -39,22 +34,27 @@ public class ListData{
         }
     }
 
-    private boolean getXSDFile(Document inputData, XmlParser xs){
+    private boolean setXSDSchema(Document inputData, XmlParser xs){
         NodeList listXmlPath = inputData.getElementsByTagName("xsdPath");
-//        System.out.println(listXmlPath.item(0).getTextContent());
-        File xsdFile = new File(listXmlPath.item(0).getTextContent());
-        if(xsdFile != null && xsdFile.exists()){
-            try{
-                vs = xs.getVAlidatorSchema(xsdFile);// вывести результат если файла нету
-            }catch(SAXException ex){
-                sb.append(String.format("xsd file %s:\n %s ", xsdFile.getName(), ex.getLocalizedMessage()));
+        try{
+            File xsdFile = new File(listXmlPath.item(0).getTextContent());
+            if(xsdFile.exists()){
+                try{
+                    vs = xs.getVAlidatorSchema(xsdFile);// вывести результат если файла нету
+                }catch(SAXException ex){
+                    sb.append(String.format("xsd file %s:\n %s ", xsdFile.getName(), ex.getLocalizedMessage()));
+                    return false;
+                }
+            }else{
+                sb.append(String.format("xsd file not exist %s", xsdFile.getAbsolutePath()));
                 return false;
             }
-        }else{
-            sb.append(String.format("xsd file not exist %s", xsdFile.getAbsolutePath()));
+            sb.append("XML Shem: ").append(xsdFile.getName()).append("\n");
+            return true;
+        }catch(NullPointerException exp){
+            sb.append("xsd file not set");
             return false;
         }
-        sb.append("XML Shem: ").append(xsdFile.getName()).append("\n");
-        return true;
     }
+
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package XmlTools;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,18 +19,18 @@ import org.xml.sax.SAXException;
  *
  * @author Павел
  */
-public class ValidatorSchema{
+public class ValidatorXMLSchema{
 
     private final Schema schema;
     private final Validator validator;
 
-    private ValidatorSchema(Schema schema){
+    private ValidatorXMLSchema(Schema schema){
         this.schema = schema;
         this.validator = schema.newValidator();
     }
 
-    protected static ValidatorSchema getValidator(Schema schema){
-        return new ValidatorSchema(schema);
+    protected static ValidatorXMLSchema getValidator(Schema schema){
+        return new ValidatorXMLSchema(schema);
     }
 
     public String isValid(File xmlFile) throws IOException{
