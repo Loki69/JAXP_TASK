@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packJSStructure>
+	<file>
+		<id>jquery-base</id>
+				<basePath>jquery//\gfdrrd\g43</basePath>
+		<uncompressedSrcName>jquery-1.6.2.js</uncompressedSrcName>
+		<compressedSrcName>jquery-1.6.2.min.js</compressedSrcName>
+	</file>
+</packJSStructure>

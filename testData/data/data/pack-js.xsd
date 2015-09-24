@@ -8,28 +8,30 @@
                 <xsd:element name="module" type="moduleType"/>
             </xsd:choice>
         </xsd:complexType>
-        
-        <xsd:key name="idKeyUnic">
+        <xsd:key name="keyId">
             <xsd:selector xpath="file | module"/>
             <xsd:field xpath="id"/>
         </xsd:key>
-                                
+        <xsd:keyref name="idDepRef" refer="keyId">
+            <xsd:selector xpath="dependencies"/>
+            <xsd:field xpath="dependency"/>
+        </xsd:keyref>                              
     </xsd:element>
     
     <xsd:complexType name="fileType">
         <xsd:complexContent>
-            <xsd:extension base="mainTyp">
+            <xsd:extension base="coreType">
                 <xsd:sequence>
                     <xsd:element name="uncompressedSrcName" type="jsPathType" />
                     <xsd:element name="compressedSrcName" type="jsPathType" minOccurs="0" />
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
-    </xsd:complexType>		
-    
+    </xsd:complexType>  
+        
     <xsd:complexType name="moduleType">
         <xsd:complexContent>
-            <xsd:extension base="mainTyp">
+            <xsd:extension base="coreType">
                 <xsd:sequence>
                     <xsd:element ref="files"/>
                 </xsd:sequence>
@@ -37,20 +39,16 @@
         </xsd:complexContent>
     </xsd:complexType>
     
-    <xsd:simpleType name="jsPathType">
-        <xsd:restriction base="xsd:string">
-            <xsd:pattern value="([a-zA-Z0-9~!@#$%^();,.'=/-])+[.]js" />
-        </xsd:restriction>
-    </xsd:simpleType>
+
     
-    <xsd:complexType name="mainTyp">
-        <xsd:choice minOccurs="0" maxOccurs="unbounded">
-            <xsd:element name="id" type="idType" />
-            <xsd:element name="basePath" type="pathType" />
-            <xsd:element name="outputPath" type="xsd:string" />
-            <xsd:element name="compressionLevel" type="compressionLevelType"/>
-            <xsd:element ref="dependencies"/>
-        </xsd:choice>
+    <xsd:complexType name="coreType">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+            <xsd:element name="id" type="idType" minOccurs="1" />
+            <xsd:element name="basePath" type="pathType" minOccurs="0" />
+            <xsd:element name="outputPath" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="compressionLevel" type="compressionLevelType" minOccurs="0"/>
+            <xsd:element ref="dependencies" minOccurs="0"/>
+        </xsd:sequence>
     </xsd:complexType>
     
     <xsd:element name="dependencies" >
@@ -65,6 +63,7 @@
         </xsd:unique>
     </xsd:element>
     
+
     <xsd:element name="files" >
         <xsd:complexType>
             <xsd:sequence minOccurs="0" maxOccurs="unbounded">
@@ -73,15 +72,21 @@
         </xsd:complexType>
     </xsd:element>
     
+    <xsd:simpleType name="jsPathType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([a-zA-Z0-9~!@#$%^();,.'=/-])+[.]js" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
     <xsd:simpleType name="idType">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="([A-Za-z0-9-])*"/>
+            <xsd:pattern value="([A-Za-z0-9-])+"/>
         </xsd:restriction>
     </xsd:simpleType>
  
     <xsd:simpleType name="pathType">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="(([a-zA-Z0-9!@#$%^*?*+-])*([/])?*"/>
+            <xsd:pattern value="([A-Za-z0-9\-._/])*"/>
         </xsd:restriction>
     </xsd:simpleType>
     

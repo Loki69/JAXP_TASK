@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packJSStructure>
+	<file>
+		<id>sdfsdf</id>
+		<basePath>jquery</basePath>
+		<compressedSrcName>jquery-1.6.2.min.js</compressedSrcName>
+	</file>
+
+</packJSStructure>

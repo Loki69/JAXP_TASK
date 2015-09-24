@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <xsdPath>C:\GitHub\rt\pack-js.xsd</xsdPath>
+    <xmlReset>
+        <xmlPath>C:\GitHub\rt\test\absentId.xml</xmlPath>
+        <xmlPath>C:\GitHub\rt\test\dontHaveFiles.xml</xmlPath>
+        <xmlPath>C:\GitHub\rt\test\dontHaveUncompressedSrcName.xml</xmlPath>
+        <xmlPath>C:\GitHub\rt\test\unValidBasePath.xml</xmlPath>
+    </xmlReset>
+</project>

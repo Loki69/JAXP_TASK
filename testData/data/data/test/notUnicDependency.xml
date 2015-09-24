@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packJSStructure>
+<module>
+		<id>jquery-plugins</id>
+		<basePath>jquery/plugin</basePath>
+		<outputPath>jquery</outputPath>
+		<compressionLevel>none</compressionLevel>
+		<files>
+			<file>jquery.tmpl.min.js</file>
+		</files>
+		<dependencies>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+			<dependency>jquery-base</dependency>
+		</dependencies>
+	</module>
+</packJSStructure>

@@ -1,0 +1,9 @@
+<packJSStructure>
+<file>
+		<id>lodash</id>
+		<basePath>lodash</basePath>
+		<uncompressedSrcName>lodash.js</uncompressedSrcName>
+		<compressedSrcName>lodash.min.js</compressedSrcName>
+				<compressionLevel>asdfasdfasdfsadf</compressionLevel>
+	</file>
+</packJSStructure>

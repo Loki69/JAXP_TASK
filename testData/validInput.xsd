@@ -20,13 +20,13 @@
 
     <xs:simpleType name="XMLpathType">
         <xs:restriction base="xs:string">
-            <xs:pattern value="([A-Za-z]:/)(\w+[\w\-/])+[.]xml"/>
+            <xs:pattern value="(\w+[\w\-/])+[.]xml"/>
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="XSDpathType">
         <xs:restriction base="xs:string">
-            <xs:pattern value="([A-Za-z]:/)(\w+[\w\-/])+[.]xsd"/>
+            <xs:pattern value="(\w+[\w\-/])+[.]xsd"/>
         </xs:restriction>
     </xs:simpleType>
     

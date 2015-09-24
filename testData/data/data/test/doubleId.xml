@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <packJSStructure>
 	<file>
-		<id>gg87?8=_</id>
+		<id>asdfwfqwf</id>
+		<id>fdssdf</id>
+		<id>wer</id>
+		<basePath>jquery</basePath>
 		<uncompressedSrcName>jquery-1.6.2.js</uncompressedSrcName>
 		<compressedSrcName>jquery-1.6.2.min.js</compressedSrcName>
-		<basePath>jquery</basePath>
 	</file>
 
 </packJSStructure>

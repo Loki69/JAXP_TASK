@@ -1,0 +1,17 @@
+<packJSStructure>
+<file>
+		<id>lodash</id>
+		<basePath>lodash</basePath>
+		<uncompressedSrcName>lodash.js</uncompressedSrcName>
+		<compressedSrcName>lodash.min.js</compressedSrcName>
+	</file>
+	<module>
+		<id>jquery-plugins</id>
+		<basePath>jquery/plugin</basePath>
+		<outputPath>jquery</outputPath>
+		<compressionLevel>none</compressionLevel>
+		<dependencies>
+			<dependency>jquery-base</dependency>
+		</dependencies>
+	</module>
+</packJSStructure>
