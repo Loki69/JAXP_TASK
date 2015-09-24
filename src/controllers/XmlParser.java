@@ -16,40 +16,33 @@ import javax.xml.validation.Validator;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-public class XmlController {
+public class XmlParser{
 
-    private static final XmlController INIT = new XmlController();
+    private static final XmlParser INIT = new XmlParser();
 
     private static DocumentBuilder parser;
-    private static Schema schema;
-    private static Validator validator;
     private static SchemaFactory sf;
 
-    private XmlController() {
-        try {
+    private XmlParser(){
+        try{
             parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(XmlController.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(ParserConfigurationException ex){
+            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static XmlController getControler() {
+    public static XmlParser getControler(){
         return INIT;
     }
 
-    public Document getDocument(String filePath) throws SAXException, IOException {
+    public Document getDocument(String filePath) throws SAXException, IOException{
         return parser.parse(filePath);
     }
 
-    public void setSchema(File xsdFile) throws SAXException {
-        schema = sf.newSchema(xsdFile);
-        validator = schema.newValidator();
+    public  ValidatorSchema getVAlidatorSchema(File xsdFile) throws SAXException{
+        return ValidatorSchema.getValidator(sf.newSchema(xsdFile));
     }
 
-    public void isValid(File xmlFile) throws SAXException, IOException {
-        Source xml = new StreamSource(xmlFile);
-        validator.validate(xml);
-    }
 }

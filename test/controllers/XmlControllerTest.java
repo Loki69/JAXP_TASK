@@ -23,7 +23,7 @@ public class XmlControllerTest {
 
     @Test
     public void testWF() throws Exception {
-        XmlController xs = XmlController.getControler();
+        XmlParser xs = XmlParser.getControler();
         System.out.println(new File("testData\\wf\\noHead.xml").getAbsolutePath());
         try {
             xs.getDocument("testData\\wf\\doubleRoot.xml");
@@ -36,7 +36,7 @@ public class XmlControllerTest {
 
     @Test
     public void testIsValid() throws Exception {
-        XmlController xs = XmlController.getControler();
+        XmlParser xs = XmlParser.getControler();
 
         try{
             xs.setSchema(new File("C:\\GitHub\\test.xsd"));
