@@ -12,33 +12,36 @@ import javax.xml.validation.SchemaFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-public class XmlParser{
+public class XmlParser {
 
     private static final XmlParser INIT = new XmlParser();
 
     private static DocumentBuilder parser;
     private static SchemaFactory sf;
 
-    private XmlParser(){
-        try{
+    private XmlParser() {
+        try {
             parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-        }catch(ParserConfigurationException ex){
+        } catch (ParserConfigurationException ex) {
             Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static XmlParser getControler(){
+    public static XmlParser getControler() {
         return INIT;
     }
 
-    public Document getDocument(String filePath) throws SAXException, IOException{
+    public Document getDocument(String filePath) throws SAXException, IOException {
         return parser.parse(filePath);
     }
 
-    public  ValidatorXMLSchema getVAlidatorSchema(File xsdFile) throws SAXException{
-        return ValidatorXMLSchema.getValidator(sf.newSchema(xsdFile));
+    public Document getDocument(File filePath) throws SAXException, IOException {
+        return parser.parse(filePath);
     }
 
+    public ValidatorXMLSchema getValidatorSchema(File xsdFile) throws SAXException {
+        return ValidatorXMLSchema.getValidator(sf.newSchema(xsdFile));
+    }
 }

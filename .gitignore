@@ -18,3 +18,6 @@ manifest.mf
 # Maven
 log/
 target/
+/JavaApplication10/nbproject/private/
+/JavaApplication11/nbproject/private/
+/JavaApplication12/nbproject/private/

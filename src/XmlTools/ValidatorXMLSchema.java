@@ -37,10 +37,10 @@ public class ValidatorXMLSchema{
         Source xml = new StreamSource(xmlFile);
         try{
             validator.validate(xml);
-        }catch(SAXException ex){
-            return ex.getLocalizedMessage();
+        }catch(SAXException ex ){
+            return String.format("Error %s", ex.getLocalizedMessage());
         }
-        return "Valid";
+        return "OK";
     }
 
 }

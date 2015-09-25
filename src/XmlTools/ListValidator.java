@@ -11,11 +11,20 @@ public class ListValidator{
 
     private ValidatorXMLSchema vs;
     private StringBuilder sb;
-
-    public String validXML(Document inputData) throws IOException{
+    private  XmlParser xs;
+    
+    public ListValidator() throws IOException{
+        xs = XmlParser.getControler();
         sb = new StringBuilder();
-        XmlParser xs = XmlParser.getControler();
-        if(setXSDSchema(inputData, xs)){
+    }
+    
+    public String getResult(Document inputListValidate) throws IOException{
+        validXML(inputListValidate);
+        return sb.toString();
+    };
+    
+    private String validXML(Document inputData) throws IOException{
+        if(setXSDSchema(inputData)){
             validetXmlList(inputData);
         }
         return sb.toString();
@@ -34,13 +43,13 @@ public class ListValidator{
         }
     }
 
-    private boolean setXSDSchema(Document inputData, XmlParser xs){
+    private boolean setXSDSchema(Document inputData){
         NodeList listXmlPath = inputData.getElementsByTagName("xsdPath");
         try{
             File xsdFile = new File(listXmlPath.item(0).getTextContent());
             if(xsdFile.exists()){
                 try{
-                    vs = xs.getVAlidatorSchema(xsdFile);// вывести результат если файла нету
+                    vs = xs.getValidatorSchema(xsdFile);// вывести результат если файла нету
                 }catch(SAXException ex){
                     sb.append(String.format("xsd file %s:\n %s ", xsdFile.getName(), ex.getLocalizedMessage()));
                     return false;

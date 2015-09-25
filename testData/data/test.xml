@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <xsdPath>testData\data\data\pack-js.xsd</xsdPath>
+    <xmlReset>
+        <xmlPath>testData\data\data\test\absentId.xml</xmlPath>
+        <xmlPath>testData\data\data\test\dontHaveFiles.xml</xmlPath>
+        <xmlPath>testData\data\data\test\dontHaveUncompressedSrcName.xml</xmlPath>
+        <xmlPath>data\test\unValidBasePath.xml</xmlPath>
+    </xmlReset>
+</project>
