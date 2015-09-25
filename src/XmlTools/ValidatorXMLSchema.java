@@ -24,7 +24,7 @@ public class ValidatorXMLSchema{
     private final Schema schema;
     private final Validator validator;
 
-    private ValidatorXMLSchema(Schema schema){
+    public ValidatorXMLSchema(Schema schema){
         this.schema = schema;
         this.validator = schema.newValidator();
     }

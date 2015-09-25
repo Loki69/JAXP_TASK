@@ -1,6 +1,7 @@
 package xsdvalidator;
 
 import XmlTools.ListValidator;
+import XmlTools.ValidatorXMLSchema;
 import java.io.IOException;
 import XmlTools.XmlParser;
 import java.io.File;
@@ -13,9 +14,13 @@ public class XSDValidator {
             XmlParser xs = XmlParser.getControler();
             File xmlListValidateData = new File(args[0]);
             if (xmlListValidateData.exists()) {
-                xs.getValidatorSchema(xmlListValidateData);
-                ListValidator ld = new ListValidator();
-                System.out.println(ld.getResult(xs.getDocument(xmlListValidateData)));
+                ValidatorXMLSchema vs = xs.getValidatorSchema(new File("./testData/xmlShema/shemaInputData/validInput.xsd"));
+                if ("OK".equals(vs.isValid(xmlListValidateData))) {
+                    ListValidator ld = new ListValidator();
+                    System.out.println(ld.getResult(xmlListValidateData));
+                } else {
+                    System.out.println(vs.isValid(xmlListValidateData));
+                }
             } else {
                 System.out.println(String.format("file not found", args[0]));
             }

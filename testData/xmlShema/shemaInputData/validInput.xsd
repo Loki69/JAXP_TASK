@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="project">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="xsdPath" type="pathType"/>
+                <xs:element name="xmlReset">
+                    <xs:complexType>
+                        <xs:sequence maxOccurs="unbounded">
+                            <xs:element name="xmlPath" type="pathType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+ <xs:simpleType name="pathType">
+  <xs:restriction base="xs:string">
+   <xs:pattern value="[a-zA-Z0-9~!@#$%^();,.\\'=/-]*" />
+  </xs:restriction>
+ </xs:simpleType>
+
+</xs:schema>
