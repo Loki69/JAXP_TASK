@@ -18,14 +18,14 @@ public class ListValidator {
     private StringBuilder sb;
     private XmlParser xs;
 
-    public ListValidator() throws IOException {
+    public ListValidator(File file)throws IOException, SAXException{
         xs = XmlParser.getControler();
         sb = new StringBuilder();
-    }
-
-    public String getResult(File file) throws IOException, SAXException {
         absolutePath = file.getParent();
         validXML(xs.getDocument(file));
+    }
+
+    public String getResult()  {
         return sb.toString();
     }
 
