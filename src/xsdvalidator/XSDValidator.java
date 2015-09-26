@@ -16,8 +16,8 @@ public class XSDValidator {
             if (xmlListValidateData.exists()) {
                 ValidatorXMLSchema vs = xs.getValidatorSchema(new File("./testData/xmlShema/shemaInputData/validInput.xsd"));
                 if ("OK".equals(vs.isValid(xmlListValidateData))) {
-                    ListValidator ld = new ListValidator();
-                    System.out.println(ld.getResult(xmlListValidateData));
+                    ListValidator ld = new ListValidator(xmlListValidateData);
+                    System.out.println(ld.getResult());
                 } else {
                     System.out.println(vs.isValid(xmlListValidateData));
                 }
