@@ -29,7 +29,6 @@ public class ListValidator {
         return sb.toString();
     }
 
-    ;
     
     private String validXML(Document inputData) throws IOException {
         if (setXSDSchema(inputData)) {
